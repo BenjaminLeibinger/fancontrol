@@ -15,6 +15,9 @@ fan_control = "/proc/acpi/ibm/fan"
 full_speed_temp = 75
 auto_speed_temp = 60
 
+# at least 1...
+time_range = 10
+
 # debug = True
 debug = False
 
@@ -43,7 +46,7 @@ def main():
 def read_sensors(sensors):
     total_temp = 0
     sensor_count = 0
-    for i in range(10):
+    for i in range(time_range):
         for sensor in sensors:
             try:
                 with open(sensor) as f:
